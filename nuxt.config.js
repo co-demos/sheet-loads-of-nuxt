@@ -1,7 +1,15 @@
 import colors from 'vuetify/es5/util/colors'
 
+import pkg from './package'
+
+require('dotenv').config()
+
+console.log('>>> nuxt.config.js / process.env.NUXT_GSHEET_IDS : ', process.env.NUXT_GSHEET_IDS)
+
+
+
 export default {
-  mode: 'universal',
+  mode: 'spa',
   /*
   ** Headers of the page
   */

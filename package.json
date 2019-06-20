@@ -16,8 +16,11 @@
     "@nuxtjs/vuetify": "0.5.5",
     "cookieparser": "^0.1.0",
     "dotenv": "^8.0.0",
+    "mapbox-gl": "^1.0.0",
     "nuxt": "^2.0.0",
-    "vue-i18n": "^8.11.2"
+    "vue-chartjs": "^3.4.2",
+    "vue-i18n": "^8.11.2",
+    "vue-mapbox": "^0.4.1"
   },
   "devDependencies": {
     "stylus": "^0.54.5",
