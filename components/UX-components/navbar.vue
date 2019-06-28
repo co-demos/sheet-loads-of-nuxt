@@ -2,7 +2,7 @@
 
 
   <v-toolbar 
-    color="primary" 
+    :color="'primary'" 
     dark
     fixed
     >

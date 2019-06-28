@@ -148,7 +148,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/vuetify.js',
+    // '~/plugins/vuetify.js',
     '~/plugins/i18n.js',
   ],
 
@@ -156,35 +156,17 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+
     '@nuxtjs/vuetify',
+
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
 
-    // // nuxt-i18n config
-    // ['nuxt-i18n', {
-    //   vuex: false,
-    //   locales : configApp.localesBuild,
-    //   langDir: 'locales/',
-    //   defaultLocale: configApp.defaultLocale,
-    // }]
+  ],
 
-    // 'nuxt-vue-material',
-
-    // [
-    //   'nuxt-fontawesome', {
-    //     imports: [
-    //      {
-    //        set: '@fortawesome/free-solid-svg-icons',
-    //        icons: ['fas']
-    //      },
-    //      {
-    //        set:'@fortawesome/free-brands-svg-icons',
-    //        icons: ['fab']
-    //      }
-    //    ]
-    //   }
-    // ]
+  devModules: [
+    '@nuxtjs/vuetify'
   ],
 
   /*
@@ -198,24 +180,26 @@ export default {
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module
   */
-  // vuetify: {
-  //   theme: {
-  //     primary: colors.blue.darken2,
-  //     accent: colors.grey.darken3,
-  //     secondary: colors.amber.darken3,
-  //     info: colors.teal.lighten1,
-  //     warning: colors.amber.base,
-  //     error: colors.deepOrange.accent4,
-  //     success: colors.green.accent3,
-  //     // primary: configApp.UI_config.colors.primary,
-  //     // secondary: configApp.UI_config.colors.secondary,
-  //     // accent: configApp.UI_config.colors.accent,
-  //     // error: configApp.UI_config.colors.error,
-  //     // warning: configApp.UI_config.colors.warning,
-  //     // info: configApp.UI_config.colors.info,
-  //     // success: configApp.UI_config.colors.success
-  //   }
-  // },
+  vuetify: {
+    theme: {
+
+      // primary: colors.blue.darken2,
+      // accent: colors.grey.darken3,
+      // secondary: colors.amber.darken3,
+      // info: colors.teal.lighten1,
+      // warning: colors.amber.base,
+      // error: colors.deepOrange.accent4,
+      // success: colors.green.accent3,
+
+      primary: configApp.UI_config.colors.primary,
+      secondary: configApp.UI_config.colors.secondary,
+      accent: configApp.UI_config.colors.accent,
+      error: configApp.UI_config.colors.error,
+      warning: configApp.UI_config.colors.warning,
+      info: configApp.UI_config.colors.info,
+      success: configApp.UI_config.colors.success
+    }
+  },
 
   /*
   ** Build configuration
