@@ -63,8 +63,6 @@ export default {
 
   name: "MainIndex",
 
-  head(){ 
-  },
 
   components: {
   },

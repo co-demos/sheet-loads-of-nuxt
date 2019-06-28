@@ -44,6 +44,11 @@ export default {
   props: [
   ],
 
+  // beforeMount: function() {
+  //   this.$vuetify.theme.primary = '#1b5632';
+  //   this.$vuetify.theme.secondary = '#6AAB84';
+  // },
+
   data() {
 
     return {

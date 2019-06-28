@@ -190,14 +190,15 @@ export default {
       // warning: colors.amber.base,
       // error: colors.deepOrange.accent4,
       // success: colors.green.accent3,
-
-      primary: configApp.UI_config.colors.primary,
-      secondary: configApp.UI_config.colors.secondary,
-      accent: configApp.UI_config.colors.accent,
-      error: configApp.UI_config.colors.error,
-      warning: configApp.UI_config.colors.warning,
-      info: configApp.UI_config.colors.info,
-      success: configApp.UI_config.colors.success
+      // colors:{
+        primary: configApp.UI_config.colors.primary,
+        secondary: configApp.UI_config.colors.secondary,
+        accent: configApp.UI_config.colors.accent,
+        error: configApp.UI_config.colors.error,
+        warning: configApp.UI_config.colors.warning,
+        info: configApp.UI_config.colors.info,
+        success: configApp.UI_config.colors.success
+      // }
     }
   },
 
