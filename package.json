@@ -1,7 +1,7 @@
 {
-  "name": "sheet-loads-nuxt",
+  "name": "sheet-loads-temp",
   "version": "1.0.0",
-  "description": "loading gsheets into nuxt store boilerplate",
+  "description": "My tiptop Nuxt.js project",
   "author": "Julien_P",
   "private": true,
   "scripts": {
@@ -11,16 +11,20 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.9.0",
+    "@mdi/font": "^3.7.95",
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/pwa": "^2.6.0",
     "@nuxtjs/vuetify": "0.5.5",
+    "chart.js": "^2.8.0",
     "cookieparser": "^0.1.0",
     "dotenv": "^8.0.0",
-    "mapbox-gl": "^1.0.0",
+    "material-design-icons-iconfont": "^5.0.1",
+    "node-sass": "^4.12.0",
     "nuxt": "^2.0.0",
+    "sass-loader": "^7.1.0",
     "vue-chartjs": "^3.4.2",
-    "vue-i18n": "^8.11.2",
-    "vue-mapbox": "^0.4.1"
+    "vue-i18n": "^8.11.2"
   },
   "devDependencies": {
     "stylus": "^0.54.5",

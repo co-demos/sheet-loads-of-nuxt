@@ -1,18 +1,26 @@
-// store for users
+// store for data
+
 
 export const state = () => ({
 
-  infos : undefined,
+  datasets : undefined,
 
-  favorites : undefined,
-  
 })
 
 export const getters = {
+
+
+  
 }
 
 export const mutations = {
+
+
+
 }
 
 export const actions = {
+
+
+
 }
