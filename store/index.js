@@ -11,7 +11,6 @@ export const state = () => ({
   defaultLocale: undefined, 
   locale: undefined, 
   locales: undefined, 
-  
 
   // UX OPTIONS
   showNav : false,

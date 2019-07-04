@@ -32,7 +32,7 @@ const choosePort = (ENVPROD) => {
   }
 }
 
-const buildGSheets = (envDict, dataType) => {
+const buildGSheets = (envDict, dsType) => {
   if (envDict) {
     let gSheets = [] 
     for ( const gsheet of envDict.split(',') ) {
@@ -40,10 +40,17 @@ const buildGSheets = (envDict, dataType) => {
       let gsheetObj = {
         gsId: gsheetConfig[0],
         sheetNumber: gsheetConfig[1],
-        name: gsheetConfig[2],
-        needsDataTypes: chooseBooleanMode(gsheetConfig[3]),
-        type: dataType,
+        // name: gsheetConfig[2],
+        datasetType: dsType,
       }
+      if ( dsType == 'dataTypes' ){
+        gsheetObj['colTitleKey'] = gsheetConfig[2]
+        gsheetObj['colTitleDatatype'] = gsheetConfig[3]
+        gsheetObj['colTitleIsList'] = gsheetConfig[4]
+        gsheetObj['colTitleListSeparator'] = gsheetConfig[5]
+        gsheetObj['colTitleLang'] = gsheetConfig[6]
+        gsheetObj['colTitleKeyValSep'] = gsheetConfig[7]
+      } 
       gSheets.push(gsheetObj)
     }
     return gSheets
@@ -84,9 +91,9 @@ const configApp = {
   // locales: buildLocales().map(loc => {return loc.code}) ,
 
   // DATA : only 3 types : "data" | "dict" | "types"
-  gsheetConfigs_data: buildGSheets(process.env.NUXT_GSHEET_IDS_DATAS, "data"),
-  gsheetConfigs_correspDicts: buildGSheets(process.env.NUXT_GSHEET_IDS_CORRESP_DICTS, "dict") ,
-  gsheetConfigs_dataTypes: buildGSheets(process.env.NUXT_GSHEET_IDS_DATA_TYPES, "types") ,
+  gsheetConfigs_data: buildGSheets(process.env.NUXT_GSHEET_IDS_DATAS, "datasets"),
+  gsheetConfigs_correspDicts: buildGSheets(process.env.NUXT_GSHEET_IDS_CORRESP_DICTS, "correspondanceDicts") ,
+  gsheetConfigs_dataTypes: buildGSheets(process.env.NUXT_GSHEET_IDS_DATA_TYPES, "dataTypes") ,
 
   // UI
   UI_config : {
@@ -151,7 +158,9 @@ export default {
     middleware: [
       'setLocales',
       'i18n',
+      'loadGSheetDataTypes',
       'loadGSheetData',
+      // 'applyDataTypes',
       'checkFavorites',
     ],
   },

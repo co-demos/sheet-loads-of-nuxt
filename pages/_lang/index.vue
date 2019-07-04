@@ -1,93 +1,104 @@
 <template>
 
-  <v-layout
-    row
-    justify-center
-    class="skip-navbar"
-  >
-    <!-- align-center -->
+  <div> 
 
-    <v-flex
-      xs4
-      sm2
-      md2
-    >
+    <v-layout
+      row
+      justify-center
+      class="skip-navbar"
+      >
+      <!-- align-center -->
 
-      <v-card>
+      <v-flex
+        xs4
+        sm2
+        md2
+      >
 
-        <v-card-title class="headline">
-          {{ $t('home.title') }}
-        </v-card-title>
-        
-        <v-card-text>
+        <v-card>
 
-          <p>
-            {{ $t('hello') }}
-          <p>
+          <v-card-title class="headline">
+            {{ $t('home.title') }}
+          </v-card-title>
+          
+          <v-card-text>
 
-          <p>
-            locale : <code> {{ locale }} </code><br><br>
-            locales : <br><code> {{ locales }} </code><br><br>
-            defaultLocale : <br><code> {{ defaultLocale }} </code><br><br>
-          </p>
+            <p>
+              {{ $t('hello') }}
+            <p>
 
-          <p>
-            {{ $t('home.introduction') }}
-          </p>
+            <p>
+              locale : <code> {{ locale }} </code><br><br>
+              locales : <br><code> {{ locales }} </code><br><br>
+              defaultLocale : <br><code> {{ defaultLocale }} </code><br><br>
+            </p>
 
-        </v-card-text>
+            <p>
+              {{ $t('home.introduction') }}
+            </p>
 
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="primary"
-            flat
-            nuxt
-            to="/inspire"
-          >
-          {{ $t('basicDict.continue') }}
-          </v-btn>
-        </v-card-actions>
+          </v-card-text>
 
-      </v-card>
-    </v-flex>
+          <v-card-actions>
+            <v-spacer />
+            <v-btn
+              color="primary"
+              flat
+              nuxt
+              to="/inspire"
+            >
+            {{ $t('basicDict.continue') }}
+            </v-btn>
+          </v-card-actions>
+
+        </v-card>
+      </v-flex>
 
 
-    <v-flex xs4 sm3 md4>
-      <v-card>
-        <v-card-title class="headline">
-            GSheet / datasets
-        </v-card-title>
-        <v-card-text>
-           <code> {{ datasets }} </code><br><br>
-        </v-card-text>
-      </v-card>
-    </v-flex>
+      <v-flex xs4 sm3 md4>
+        <v-card>
+          <v-card-title class="headline">
+              GSheet / datasets
+          </v-card-title>
+          <v-card-text>
+            <code> {{ datasets }} </code><br><br>
+          </v-card-text>
+        </v-card>
+      </v-flex>
 
-    <v-flex xs4 sm3 md3>
-      <v-card>
-        <v-card-title class="headline">
-            GSheet / correspondanceDicts
-        </v-card-title>
-        <v-card-text>
-           <code> {{ correspondanceDicts }} </code><br><br>
-        </v-card-text>
-      </v-card>
-    </v-flex>
+      <v-flex xs4 sm3 md3>
+        <v-card>
+          <v-card-title class="headline">
+              GSheet / correspondanceDicts
+          </v-card-title>
+          <v-card-text>
+            <code> {{ correspondanceDicts }} </code><br><br>
+          </v-card-text>
+        </v-card>
+      </v-flex>
 
-    <v-flex xs4 sm3 md3>
-      <v-card>
-        <v-card-title class="headline">
-            GSheet / dataTypes
-        </v-card-title>
-        <v-card-text>
-           <code> {{ dataTypes }} </code><br><br>
-        </v-card-text>
-      </v-card>
-    </v-flex>
+      <v-flex xs4 sm3 md3>
+        <v-card>
+          <v-card-title class="headline">
+              GSheet / dataTypes
+          </v-card-title>
+          <v-card-text>
+            <code> {{ dataTypes }} </code><br><br>
+          </v-card-text>
+        </v-card>
+      </v-flex>
 
-    
-  </v-layout>
+      
+    </v-layout>
+
+
+    <BasicTable>
+
+    </BasicTable>
+
+  </div>
+
+
 </template>
 
 
@@ -95,12 +106,14 @@
 
 import { mapState, mapGetters, mapActions } from 'vuex'
 
+import BasicTable from '~/components/DATA-components/basic-table'
+
 export default {
 
   name: "MainIndex",
 
-
   components: {
+    BasicTable,
   },
 
   middleware : [
