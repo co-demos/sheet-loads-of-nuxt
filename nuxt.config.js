@@ -32,6 +32,27 @@ const choosePort = (ENVPROD) => {
   }
 }
 
+const buildGSheets = (envDict, dataType) => {
+  if (envDict) {
+    let gSheets = [] 
+    for ( const gsheet of envDict.split(',') ) {
+      let gsheetConfig = gsheet.split(':')
+      let gsheetObj = {
+        gsId: gsheetConfig[0],
+        sheetNumber: gsheetConfig[1],
+        name: gsheetConfig[2],
+        needsDataTypes: chooseBooleanMode(gsheetConfig[3]),
+        type: dataType,
+      }
+      gSheets.push(gsheetObj)
+    }
+    return gSheets
+  } else {
+    // if no envDict return undefined
+    return undefined
+  }
+}
+
 const buildLocales = () => {
   let locales = [] 
   for ( const locale of process.env.NUXT_ENV_LOCALES.split(',') ) {
@@ -49,18 +70,25 @@ const buildLocales = () => {
 
 const configApp = {
 
+  /// APP INFOS
   appTitle: process.env.NUXT_ENV_APP_TITLE,
 
+  // DEV MODE - PORT - HOST ...
   mode: process.env.NUXT_ENV_RUN_MODE,
   host: process.env.NUXT_ENV_HOST,
   port: choosePort(process.env.NUXT_ENV_RUN_MODE),
 
+  // INTERNATIONALIZATION
   defaultLocale: process.env.NUXT_ENV_LOCALE_DEFAULT,
   localesBuild: buildLocales(),
   // locales: buildLocales().map(loc => {return loc.code}) ,
 
-  gsheet_ids: process.env.NUXT_GSHEET_IDS.split(','),
+  // DATA : only 3 types : "data" | "dict" | "types"
+  gsheetConfigs_data: buildGSheets(process.env.NUXT_GSHEET_IDS_DATAS, "data"),
+  gsheetConfigs_correspDicts: buildGSheets(process.env.NUXT_GSHEET_IDS_CORRESP_DICTS, "dict") ,
+  gsheetConfigs_dataTypes: buildGSheets(process.env.NUXT_GSHEET_IDS_DATA_TYPES, "types") ,
 
+  // UI
   UI_config : {
     colors : {
       primary: process.env.VUETIFY_primary,
@@ -123,6 +151,7 @@ export default {
     middleware: [
       'setLocales',
       'i18n',
+      'loadGSheetData',
       'checkFavorites',
     ],
   },
@@ -150,6 +179,7 @@ export default {
   plugins: [
     // '~/plugins/vuetify.js',
     '~/plugins/i18n.js',
+    // '~/plugins/loadGSheetData',
   ],
 
   /*
@@ -182,15 +212,6 @@ export default {
   */
   vuetify: {
     theme: {
-
-      // primary: colors.blue.darken2,
-      // accent: colors.grey.darken3,
-      // secondary: colors.amber.darken3,
-      // info: colors.teal.lighten1,
-      // warning: colors.amber.base,
-      // error: colors.deepOrange.accent4,
-      // success: colors.green.accent3,
-      // colors:{
         primary: configApp.UI_config.colors.primary,
         secondary: configApp.UI_config.colors.secondary,
         accent: configApp.UI_config.colors.accent,
@@ -198,7 +219,6 @@ export default {
         warning: configApp.UI_config.colors.warning,
         info: configApp.UI_config.colors.info,
         success: configApp.UI_config.colors.success
-      // }
     }
   },
 

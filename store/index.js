@@ -21,7 +21,6 @@ export const state = () => ({
 export const getters = {
 
   // INTERNATIONALIZATION
-
   getDefaultLocale : (state, getters) => {
     console.log("S-index-G-getDefaultLocale ...")
     return process.env.CONFIG_APP.defaultLocale
@@ -31,14 +30,6 @@ export const getters = {
     console.log("S-index-G-getCurrentLocale / state.locale : ", state.locale)
     return state.locale ? state.locale : getters.getDefaultLocale
   },
-
-  // getCurrentLocaleCode : (state, getters) => {
-  //   console.log("S-index-G-getCurrentLocaleCode / state.locale : ", state.locale)
-  //   let currentLocale = getters.getCurrentLocale
-  //   let localesBuild = process.env.CONFIG_APP.localesBuild
-  //   let currentLoc = localesBuild.find(loc => { return loc.iso === currentLocale })
-  //   return currentLoc.code
-  // },
 
   // UX GETTERS
   getNavbarVisibility : state => {

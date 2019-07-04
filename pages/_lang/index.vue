@@ -1,17 +1,17 @@
 <template>
 
   <v-layout
-    column
+    row
     justify-center
-    align-center
     class="skip-navbar"
   >
-    <v-flex
-      xs12
-      sm8
-      md6
-    >
+    <!-- align-center -->
 
+    <v-flex
+      xs4
+      sm2
+      md2
+    >
 
       <v-card>
 
@@ -51,6 +51,42 @@
 
       </v-card>
     </v-flex>
+
+
+    <v-flex xs4 sm3 md4>
+      <v-card>
+        <v-card-title class="headline">
+            GSheet / datasets
+        </v-card-title>
+        <v-card-text>
+           <code> {{ datasets }} </code><br><br>
+        </v-card-text>
+      </v-card>
+    </v-flex>
+
+    <v-flex xs4 sm3 md3>
+      <v-card>
+        <v-card-title class="headline">
+            GSheet / correspondanceDicts
+        </v-card-title>
+        <v-card-text>
+           <code> {{ correspondanceDicts }} </code><br><br>
+        </v-card-text>
+      </v-card>
+    </v-flex>
+
+    <v-flex xs4 sm3 md3>
+      <v-card>
+        <v-card-title class="headline">
+            GSheet / dataTypes
+        </v-card-title>
+        <v-card-text>
+           <code> {{ dataTypes }} </code><br><br>
+        </v-card-text>
+      </v-card>
+    </v-flex>
+
+    
   </v-layout>
 </template>
 
@@ -74,6 +110,7 @@ export default {
   ],
 
   beforeMount : function(){
+    console.log("P-index / beforeMount....")
   },
 
   data() {
@@ -85,12 +122,19 @@ export default {
 
     ...mapState({
       log : state => state.log, 
+
       locale : state => state.locale,
       locales : state => state.locales,
       defaultLocale : state => state.defaultLocale,
+
+      datasets : state => state.data.datasets,
+      correspondanceDicts : state => state.data.correspondanceDicts,
+      dataTypes : state => state.data.dataTypes,
+
     }),
 
     ...mapGetters({
+
     }),
   },
 
