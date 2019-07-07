@@ -1,6 +1,101 @@
+<style>
+
+  .skip-navbar-more{
+    margin-top: 75px;
+  }
+
+</style>
+
+
 <template>
 
   <div> 
+
+    <v-container
+      class="skip-navbar-more"
+      >
+      
+      <!-- DATASETS -->
+      <v-layout
+        row
+        wrap
+        >
+        {{ $t('data.dataType') }} : {{ $t('data.datasets') }}
+        <v-flex 
+          v-for="(ds, dsIndex) in datasets"
+          :key="dsIndex"
+          xs12
+          >
+          <BasicTable
+            :dsType="'datasets'"
+            :dsId="ds.dsId"
+            :applyCorrespondance="true"
+            :tableOptions="{}"
+            >
+          </BasicTable>
+        </v-flex>
+      </v-layout>
+
+      <br>
+
+      <!-- CORREPONDANCE TABLES -->
+      <v-layout
+        row
+        wrap
+        >
+        {{ $t('data.dataType') }} : {{ $t('data.corrrespondanceDicts') }}
+        <v-flex 
+          v-for="(ds, dsIndex) in correspondanceDicts"
+          :key="dsIndex"
+          xs12
+          >
+          <BasicTable
+            :dsType="'correspondanceDicts'"
+            :dsId="ds.dsId"
+            :applyCorrespondance="false"
+            :tableOptions="{}"
+            >
+          </BasicTable>
+        </v-flex>
+      </v-layout>
+
+      <br>
+
+      <!-- DATA TYPES -->
+      <v-layout
+        row
+        wrap
+        >
+        {{ $t('data.dataType') }} : {{ $t('data.dataTypes') }}
+        <v-flex 
+          v-for="(ds, dsIndex) in dataTypes"
+          :key="dsIndex"
+          xs12
+          >
+          <BasicTable
+            :dsType="'dataTypes'"
+            :dsId="ds.dsId"
+            :applyCorrespondance="false"
+            :tableOptions="{}"
+            >
+          </BasicTable>
+        </v-flex>
+      </v-layout>
+
+
+
+
+
+    </v-container>
+
+
+
+
+
+
+
+
+
 
     <v-layout
       row
@@ -92,9 +187,7 @@
     </v-layout>
 
 
-    <BasicTable>
 
-    </BasicTable>
 
   </div>
 

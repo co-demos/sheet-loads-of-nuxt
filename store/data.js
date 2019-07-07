@@ -37,6 +37,12 @@ export const getters = {
     console.log("S-data-G-getDatasets / datasetName : ", datasetName)
     return state[ datasetName ]
   },
+  getOneDataset: state => ( datasetName, dsId ) => {
+    console.log("S-data-G-getDatasets / datasetName : ", datasetName)
+    return state[ datasetName ].find( d => {
+      return d.dsId === dsId
+    })
+  },
   getConcatenatedDataTypes: state => {
     console.log("S-data-G-getConcatenatedDataTypes ... ")
     let concatenated = []

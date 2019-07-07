@@ -38,18 +38,21 @@ const buildGSheets = (envDict, dsType) => {
     for ( const gsheet of envDict.split(',') ) {
       let gsheetConfig = gsheet.split(':')
       let gsheetObj = {
+        datasetType: dsType,
         gsId: gsheetConfig[0],
         sheetNumber: gsheetConfig[1],
-        // name: gsheetConfig[2],
-        datasetType: dsType,
+        dsId: gsheetConfig[2],
+      }
+      if ( dsType == 'correspondanceDicts' ){
+        gsheetObj['colTitleKey'] = gsheetConfig[3]
       }
       if ( dsType == 'dataTypes' ){
-        gsheetObj['colTitleKey'] = gsheetConfig[2]
-        gsheetObj['colTitleDatatype'] = gsheetConfig[3]
-        gsheetObj['colTitleIsList'] = gsheetConfig[4]
-        gsheetObj['colTitleListSeparator'] = gsheetConfig[5]
-        gsheetObj['colTitleLang'] = gsheetConfig[6]
-        gsheetObj['colTitleKeyValSep'] = gsheetConfig[7]
+        gsheetObj['colTitleKey'] = gsheetConfig[3]
+        gsheetObj['colTitleDatatype'] = gsheetConfig[4]
+        gsheetObj['colTitleIsList'] = gsheetConfig[5]
+        gsheetObj['colTitleListSeparator'] = gsheetConfig[6]
+        gsheetObj['colTitleLang'] = gsheetConfig[7]
+        gsheetObj['colTitleKeyValSep'] = gsheetConfig[8]
       } 
       gSheets.push(gsheetObj)
     }

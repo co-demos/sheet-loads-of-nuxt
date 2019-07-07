@@ -131,7 +131,7 @@ export function applyDataTypes ( valueObject, dsTypes ){
         value = (isList)? value.map(Number) : parseInt(value)
       }
       // floats
-      else if ( dsType.colDatatype === 'float' ) {
+      else if ( dsType.colDatatype === 'float' || dsType.colDatatype === 'percent' ) {
         value = (isList)? value.map(parseFloat) : parseFloat(value)
       }
       // object
@@ -198,14 +198,21 @@ export default async function loadGoogleSheet( GSheetConfig, dataTypes=undefined
         nameSheet: response.data.feed.title.$t,
         gsId : GSheetConfig.gsId,
         gsSheetN : GSheetConfig.sheetNumber,
+        dsId : GSheetConfig.dsId,
         dsType: GSheetConfig.datasetType,
         dataRows: remapGSheetData( response.data.feed.entry, GSheetConfig, dataTypes ),
       }
       GSdata['dataHeaders'] = createDatasetHeaders( GSdata.dataRows[0], dataTypes )
+      
+      if ( GSheetConfig.datasetType == 'correspondanceDicts') {
+        GSdata['colTitleKey'] = GSheetConfig.colTitleKey
+      }
+      
       if ( GSheetConfig.datasetType == 'dataTypes') {
         GSdata['colTitleKey'] = GSheetConfig.colTitleKey
         GSdata['colTitleDatatype'] = GSheetConfig.colTitleDatatype
       }
+      
       console.log('>>> UT-loadGSheet / GSdata :', GSdata)
 
       return GSdata

@@ -1,29 +1,53 @@
 <template>
 
-  <div>
+  <v-card>
 
-    TEST BASIC TABLE
-    <br>
+    <!-- TEST BASIC TABLE<br><br>
+    <p>
+      dsType : <code> {{ dsType }} </code><br>
+      dsId : <code> {{ dsId }} </code><br>
+      applyCorrespondance : <code> {{ applyCorrespondance }} </code><br>
+    </p>
+    <br> -->
     
+    <v-card-title>
+      {{ $t('data.dsId') }} : &nbsp; <strong>{{ dsId }}</strong>
+      <v-spacer></v-spacer>
+      <v-text-field
+        v-model="search"
+        append-icon="search"
+        label="Search"
+        single-line
+        hide-details
+      ></v-text-field>
+    </v-card-title>
+
+
     <v-data-table
       :headers="headers"
-      :items="desserts"
-      class="elevation-1"
+      :items="dataItems"
+      :search="search"
       >
+      <!-- class="elevation-1" -->
 
       <template v-slot:items="props">
-        <td>{{ props.item.name }}</td>
-        <td class="text-xs-right">{{ props.item.calories }}</td>
-        <td class="text-xs-right">{{ props.item.fat }}</td>
-        <td class="text-xs-right">{{ props.item.carbs }}</td>
-        <td class="text-xs-right">{{ props.item.protein }}</td>
-        <td class="text-xs-right">{{ props.item.iron }}</td>
+
+        <td 
+          v-for="(valueItem, keyItem) in props.item" 
+          :key="keyItem"
+          >
+          {{ props.item[ keyItem ] }}
+        </td>
+
       </template>
 
     </v-data-table>
 
 
-  </div>
+
+
+
+  </v-card>
 
 </template>
 
@@ -31,10 +55,11 @@
 
 import { mapState, mapGetters, mapActions } from 'vuex'
 
+import BasicTable from '~/components/DATA-components/basic-table'
+
 export default {
 
   name: "BasicTable",
-
 
   components: {
   },
@@ -43,110 +68,56 @@ export default {
   ],
 
   props: [
+    'dsType',
+    'dsId',
+    'applyCorrespondance',
+    'tableOptions'
   ],
 
   beforeMount : function(){
+
     console.log("C-basicTable / beforeMount....")
+
+    console.log("C-basicTable / this.dsType : ", this.dsType )
+    console.log("C-basicTable / this.dsId : ", this.dsId )
+    console.log("C-basicTable / this.applyCorrespondance : ", this.applyCorrespondance )
+    console.log("C-basicTable / this.tableOptions : ", this.tableOptions )
+
+    const dataset = this.getDataset( this.dsType, this.dsId)
+    console.log("C-basicTable / dataset : ", dataset )
+
+    this.headers = dataset.dataHeaders
+    this.dataItems = dataset.dataRows
+
   },
 
   data() {
     return {
 
+      search: '',
       headers: [
-        {
-          text: 'Dessert (100g serving)',
-          align: 'left',
-          sortable: false,
-          value: 'name'
-        },
-        { text: 'Calories', value: 'calories' },
-        { text: 'Fat (g)', value: 'fat' },
-        { text: 'Carbs (g)', value: 'carbs' },
-        { text: 'Protein (g)', value: 'protein' },
-        { text: 'Iron (%)', value: 'iron' }
+        // {
+        //   text: 'Dessert (100g serving)',
+        //   align: 'left',
+        //   sortable: false,
+        //   value: 'name'
+        // },
+        // { text: 'Calories', value: 'calories' },
+        // { text: 'Fat (g)', value: 'fat' },
+        // { text: 'Carbs (g)', value: 'carbs' },
+        // { text: 'Protein (g)', value: 'protein' },
+        // { text: 'Iron (%)', value: 'iron' }
       ],
 
-      desserts: [
-        {
-          name: 'Frozen Yogurt',
-          calories: 159,
-          fat: 6.0,
-          carbs: 24,
-          protein: 4.0,
-          iron: '1%'
-        },
-        {
-          name: 'Ice cream sandwich',
-          calories: 237,
-          fat: 9.0,
-          carbs: 37,
-          protein: 4.3,
-          iron: '1%'
-        },
-        {
-          name: 'Eclair',
-          calories: 262,
-          fat: 16.0,
-          carbs: 23,
-          protein: 6.0,
-          iron: '7%'
-        },
-        {
-          name: 'Cupcake',
-          calories: 305,
-          fat: 3.7,
-          carbs: 67,
-          protein: 4.3,
-          iron: '8%'
-        },
-        {
-          name: 'Gingerbread',
-          calories: 356,
-          fat: 16.0,
-          carbs: 49,
-          protein: 3.9,
-          iron: '16%'
-        },
-        {
-          name: 'Jelly bean',
-          calories: 375,
-          fat: 0.0,
-          carbs: 94,
-          protein: 0.0,
-          iron: '0%'
-        },
-        {
-          name: 'Lollipop',
-          calories: 392,
-          fat: 0.2,
-          carbs: 98,
-          protein: 0,
-          iron: '2%'
-        },
-        {
-          name: 'Honeycomb',
-          calories: 408,
-          fat: 3.2,
-          carbs: 87,
-          protein: 6.5,
-          iron: '45%'
-        },
-        {
-          name: 'Donut',
-          calories: 452,
-          fat: 25.0,
-          carbs: 51,
-          protein: 4.9,
-          iron: '22%'
-        },
-        {
-          name: 'KitKat',
-          calories: 518,
-          fat: 26.0,
-          carbs: 65,
-          protein: 7,
-          iron: '6%'
-        }
+      dataItems: [
+        // {
+        //   name: 'Frozen Yogurt',
+        //   calories: 159,
+        //   fat: 6.0,
+        //   carbs: 24,
+        //   protein: 4.0,
+        //   iron: '1%'
+        // },
       ]
 
     }
@@ -168,7 +139,7 @@ export default {
     }),
 
     ...mapGetters({
-
+      getDataset: 'data/getOneDataset' 
     }),
   },
 

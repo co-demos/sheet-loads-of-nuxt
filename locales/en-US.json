@@ -3,7 +3,7 @@
   "hello" : "Hello world...",
 
   "basicDict" : {
-    "welcome" : "Welcome",
+    "welcome" : "Welcome to Sheet-Loads",
     "continue" : "continue"
   },
 
@@ -30,6 +30,15 @@
   "about": {
     "title": "About",
     "introduction": "This page is made to give you more informations."
+  },
+
+  "data" : {
+    "dsId" : "identifier",
+    "dataType" : "type",
+
+    "datasets" : "datasets",
+    "correspondanceDicts" : "dorrespondance tables",
+    "dataTypes" : "data types"
   }
   
 }
