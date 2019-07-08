@@ -39,6 +39,12 @@
     "datasets" : "datasets",
     "correspondanceDicts" : "dorrespondance tables",
     "dataTypes" : "data types"
+  },
+
+  "datatable" : {
+    "rowsperpage" : "rows per page",
+    "of": "of",
+    "search" : "search"
   }
   
 }

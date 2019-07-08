@@ -16,7 +16,7 @@
       <v-text-field
         v-model="search"
         append-icon="search"
-        label="Search"
+        :label="$t('datatable.search')"
         single-line
         hide-details
       ></v-text-field>
@@ -27,6 +27,8 @@
       :headers="headers"
       :items="dataItems"
       :search="search"
+      :rows-per-page-items="options.rowPerPageItems"
+      :rows-per-page-text="$t('datatable.rowsperpage')"
       >
       <!-- class="elevation-1" -->
 
@@ -118,7 +120,11 @@ export default {
         //   protein: 4.0,
         //   iron: '1%'
         // },
-      ]
+      ],
+
+      options: {
+        rowPerPageItems: [3,5,10,25,50]
+      }
 
     }
   },
