@@ -39,6 +39,12 @@
     "datasets" : "jeux de données",
     "correspondanceDicts" : "tables de correspondance",
     "dataTypes" : "type de variables"
+  },
+
+  "datatable" : {
+    "rowsperpage" : "lignes par page",
+    "of": "de",
+    "search" : "rechercher"
   }
 
 }
