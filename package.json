@@ -16,7 +16,7 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/pwa": "^2.6.0",
     "@nuxtjs/vuetify": "0.5.5",
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "cookieparser": "^0.1.0",
     "dotenv": "^8.0.0",
     "lodash": "^4.17.11",
